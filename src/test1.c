@@ -1127,7 +1127,9 @@ static void inttoptrFunc(
   int argc,
   sqlite3_value **argv
 ){
-  void *p = testStringToPointer((const char*)sqlite3_value_text(argv[0]));
+  unsigned char *p;
+  p = (unsigned char*)testStringToPointer(
+                           (const char*)sqlite3_value_text(argv[0]));
   if( argc==2 ){
     p += sqlite3_value_int(argv[1]);
   }
